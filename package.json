@@ -6,8 +6,7 @@
   "scripts": {
     "init": "tsc --init",
     "build": "rimraf dist && tsc",
-    "start": "node dist/app.js",
-    "restart": "npm run build && npm run serve",
+    "start": "npm run build && node dist/app.js",
     "watch": "tsc -w -p ./src -p ./tsconfig.json"
   },
   "author": "sacros",
