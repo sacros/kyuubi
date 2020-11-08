@@ -5,11 +5,19 @@ import { insert, searchRecentHash } from "../services/search-data"
 import * as R from "ramda"
 
 export const processSearch = async (term: string) => {
+  /**
+   * checking if same query has been made recently (no longer than 24 hours ago)
+   * if yes, fetch the data from DB
+   */
   const hash = MD5(term.toLowerCase().replace(/ /g, '')).toString()
   const cache = await searchRecentHash(hash)
   if (cache) {
     return cache.result
   }
+
+  /**
+   * else, do google search and save result in the DB
+   */
   const [success, googleSearchResult] = await search(term)
 
   if (!success) return []
@@ -28,6 +36,9 @@ const transformData = (data) => {
   return data.items.map(item => R.pick(["title", "link", "snippet"], item))
 }
 
+/**
+ * function to stringify the data
+ */
 const stringifiedData = (data) => {
   const responseString = data.reduce((acc, curr) => {
     acc.count += 1
