@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "lib": ["es2017", "es2017.object", "esnext.asynciterable"],
+    "target": "es2017",
+    "noImplicitAny": false,
+    "outDir": "./dist",
+    "inlineSourceMap": true,
+    "newLine": "LF",
+    "declaration": false,
+    "experimentalDecorators": true,
+    "strictNullChecks": true,
+    "noUnusedParameters": false,
+    "noUnusedLocals": false,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowUnreachableCode": false,
+    "noEmitOnError": true
+  },
+  "include": ["src/**/*"]
+}
