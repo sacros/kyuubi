@@ -12,7 +12,7 @@ export const processSearch = async (term: string) => {
   const hash = MD5(term.toLowerCase().replace(/ /g, '')).toString()
   const cache = await searchRecentHash(hash)
   if (cache) {
-    return cache.result
+    return stringifiedData(cache.result)
   }
 
   /**
